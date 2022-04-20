@@ -2,8 +2,6 @@
 # Q. Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
 import argparse
-from ast import arg
-
 
 def is_unique(
     s: str
