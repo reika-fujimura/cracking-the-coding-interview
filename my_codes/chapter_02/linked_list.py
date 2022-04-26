@@ -12,13 +12,23 @@ class Node:
         self.value = value
         self.next = None
 #         self.previous = None
-    
+
+    def __repr__(self):
+        return self.value
+
+class NodeDouble:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        self.previous = None
+
     def __repr__(self):
         return self.value
 
 
 class LinkedList:
     '''usage
+    single linked list
     llist = LinkedList(["a", "b", "c", "d", "e"])
     '''
     def __init__(self, nodes=None) -> None:
@@ -94,4 +104,39 @@ class LinkedList:
             previous_node = current_node
 
 
+class LinkedListDouble:
+    '''usage
+    double linked list
+    llist = LinkedList(["a", "b", "c", "d", "e"])
+    '''
+    def __init__(self, nodes=None) -> None:
+        self.head = None
+        self.tail = None
+        if nodes is not None:
+            node = Node(value=nodes.pop(0))
+            self.head = self.tail = node
+            for el in nodes:
+                node.next = Node(value=el)
+                node.next.previous = node
+                node = node.next
+                self.tail = node
+                
+    def __repr__(self) -> str:
+        node = self.head
+        nodes = []
+        while node is not None:
+            nodes.append(node.value)
+            node = node.next
+        nodes.append('None')
+        return '->'.join(nodes)
+    
 
+    def __iter__(self):
+        '''iterator
+        for node in llist:
+            print(node)
+        '''
+        node = self.head
+        while node is not None:
+            yield node
+            node = node.next
