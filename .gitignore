@@ -160,3 +160,8 @@ cython_debug/
 #.idea/
 
 # Original
+
+# Custom
+samples/
+.DS_Store
+**/.DS_Store
